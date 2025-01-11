@@ -1,0 +1,39 @@
+<div class="author py-2.5 text-center">
+  <div class="typewriter flex justify-center">
+    <div>
+      <h1 class="authorHead mt-2.5 mb-[5px] font-semibold m-auto overflow-hidden whitespace-nowrap border-r border-myblack">Hi, I am Jeffrey.</h1>
+    </div>
+  </div>  <p class="authorBody text-fontSizeMd mt-[5px] mb-10">Web Developer and Ethical Hacker.</p>
+</div>
+
+<img
+  src="/img/hero-image.webp"
+  alt="Person looking out a window"
+  class="hero-image max-h-[528px] overflow-hidden rounded-radius drop-shadow-shadow"
+  width="981"
+  height="528"
+/>
+
+<section class="articles ">
+  <h2 class="articlesHead mt-16 font-normal">Latest Posts</h2>
+  <ul class="articlesUl text-fontSizeUl flex flex-col">
+
+    <% posts.forEach(post => { %>
+      <li class="text-[24px] cursor-pointer  duration-100  hover:filter-none">
+  
+        <a class="flex flex-col justify-between my-[18px] md:flex-row md:items-center" href="/post/<%= post._id %>">
+          <span><%= post.title %></span>
+          <span class="articleListDate text-fontSizeBase text-mygray w-[260px] inline-block md:text-right"><%= post.createdAt.toDateString() %></span>
+        </a>
+  
+      </li>
+    <% }) %>
+
+  </ul>
+
+  <% if (nextPage !== null) { %>
+    <a href="/?page=<%= nextPage %>" class="pagination text-[1.3rem] text-mygray mt-10 inline-block hover:text-myblack">&lt; View Older Posts</a>
+   
+  <% } %>
+
+</section>

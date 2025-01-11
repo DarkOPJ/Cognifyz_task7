@@ -1,0 +1,35 @@
+<header class="header grid grid-cols-2 pt-2.5">
+  <a
+    class="headerLogo font-extrabold text-[25xp] hover:underline flex items-center"
+    href="/"
+    >NodeJs</a
+  >
+
+  <nav class="headerNav flex justify-center items-center">
+    <ul class="flex items-center gap-4 font-semibold p-0">
+      <li><a class="navLink p-2.5 hover:underline <%= isActiveRoute('/', currentRoute) %>" href="/">Home</a></li>
+      <li>
+        <a class="navLink p-2.5 hover:underline <%= isActiveRoute('/contact', currentRoute) %>" href="/contact">Contact</a>
+      </li>
+      <li>
+        <button
+          class="p-2.5 hover:underline"
+          id="searchBtn"
+          aria-expanded="false"
+        >
+          Search <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="headerBtn flex justify-end">
+    <a
+      href="/dashboard"
+      class="searchBtn flex gap-1.5 items-center rounded-radius py-1.5 px-3 bg-none text-fontSizeBase font-semibold text-myblack border-transparent border-2 hover:border-myblack"
+    >
+      <i class="fa-regular fa-user"></i>
+      <%= locals.user %>
+    </a>
+  </div>
+</header>

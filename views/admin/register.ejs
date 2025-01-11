@@ -1,0 +1,72 @@
+<h3 class="font-bold my-5">Sign Up</h3>
+
+<form action="/register" method="POST">
+  <div class="my-3 flex gap-4 flex-wrap sm:flex-nowrap">
+    <div class="w-full">
+      <label for="firstName" class="font-bold">First Name</label>
+      <input
+        type="text"
+        class="border border-mygray"
+        placeholder="eg. John"
+        id="firstName"
+        name="firstName"
+      />
+    </div>
+    <div class="w-full">
+      <label for="lastName" class="font-bold">Last Name</label>
+      <input
+        type="text"
+        class="border border-mygray"
+        placeholder="eg. Smith"
+        id="lastName"
+        name="lastName"
+      />
+    </div>
+  </div>
+
+  <div class="my-3 flex gap-4 flex-wrap sm:flex-nowrap">
+    <div class="w-full">
+      <label for="email" class="font-bold">Email</label>
+      <input
+        type="email"
+        class="border border-mygray"
+        placeholder="Enter email"
+        id="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="w-full">
+      <label for="username" class="font-bold">Username</label>
+      <input
+        type="text"
+        class="border border-mygray"
+        placeholder="Enter username"
+        id="username"
+        name="username"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="my-3 flex gap-4 flex-wrap sm:flex-nowrap">
+    <%- include('../partials/password') %>
+
+    <div class="w-full flex justify-center items-end">
+      <input
+        type="submit"
+        class="text-white bg-black cursor-pointer"
+        value="Register"
+      />
+    </div>
+  </div>
+</form>
+
+<div class="text-center mt-4">
+  <p>
+    Already have an account?
+    <a class="text-blue-800 hover:text-blue-600" href="/admin">Sign In</a>
+  </p>
+</div>
+
+<script defer src="/js/password.js"></script>

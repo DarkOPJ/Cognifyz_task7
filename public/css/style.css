@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap');
+
+  /* *{
+    background: rgba(0, 128, 0, 0.103);
+  } */
+/* Add your custom styles here */
+body{
+  @apply font-poppins bg-[#faf5ee] bg-[url('/img/img-noise-361x370.png')] text-myblack text-fontSizeBase; 
+}
+
+a{
+  @apply text-myblack
+}
+h1{
+  @apply text-myblack text-fontSizeXl
+}
+h2{
+  @apply text-myblack text-fontSizeLg
+}
+h3{
+  @apply text-myblack text-fontSizeMd
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="submit"],
+select,
+textarea{
+  @apply font-poppins text-fontSizeBase block box-border w-full py-[0.7rem] px-[0.75rem] mb-4
+}
+
+img{
+  @apply w-full h-auto
+}
+
+.btn{
+  @apply bg-myblack text-white cursor-pointer my-1 mx-0.5
+}
+.btn-delete{
+  @apply py-2.5 px-4 bg-myred
+}
+
+
+/* Pure CSS */
+body.no-scroll {
+  overflow: hidden;
+}
+.header{
+  grid-template-areas: 
+  "logo button"
+  "menu menu";
+}
+@media only screen and (min-width: 768px) {
+  .header{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "logo menu button";
+  }
+}
+.headerLogo{
+  grid-area: logo;
+}
+.headerNav{
+  grid-area: menu;
+}
+.headerBtn{
+  grid-area: button;
+}
+
+.navLink.active{
+  @apply  text-mygray
+}
+
+.articlesUl li:not(:last-child), .admin-posts li:not(:last-child){
+  @apply border-b text-mylightgray
+}
+
+.articlesUl:hover li{
+  filter: blur(3px);
+}
+
+.articlesUl:hover li:hover{
+  filter: none;
+}
+
+/* Typewriter Animation */
+.authorHead{
+  animation: typing 3s steps(17) forwards,
+  blinking 1s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+  
+}
+
+@keyframes blinking {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Hide the clear (x) button in the search input */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.searchBar.open{
+  transform: translateY(0);
+  transition: transform 100ms;
+}
+
+/* Contact Page */
+.contactContainer{
+  /* display: grid; */
+  /* grid-template-columns: repeat(); */
+}
+
+
+/* Admin Dashboard */
+.admin-posts-controls .btn{
+  @apply inline-block bg-black text-mylightgray border-0 font-[0.8rem] py-1 px-2 leading-loose hover:bg-myblack duration-300
+}
+
+.passwordField{
+  padding-right: 34px !important;
+}
+
+@layer utilities {
+  dialog::backdrop {
+    @apply bg-black bg-opacity-60; /* Dark background with transparency */
+  }
+}

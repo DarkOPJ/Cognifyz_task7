@@ -1,0 +1,42 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 ">
+    <div>
+        <h1 class="font-bold text-center mb-4">NodeJs</h1>
+        <img class="w-[70%] m-auto" src="img/content-creation.png" alt="Content creation image">
+    </div>
+
+    <form action="/admin" method="POST">
+      <h3 class="font-bold my-5">Login</h3>
+      <div class="my-3">
+        <div class="w-full">
+          <label for="username" class="font-bold">Username</label>
+          <input
+            type="text"
+            class="border border-mygray"
+            placeholder="Enter username"
+            id="username"
+            name="username"
+            required
+          />
+        </div>
+        <%- include('../partials/password') %>
+      </div>
+    
+      <div class="w-full flex justify-center items-end">
+        <input
+          type="submit"
+          class="text-white bg-black cursor-pointer"
+          value="Register"
+        />
+      </div>
+    
+      <div class="text-center mt-4">
+        <p>
+          Don't have an account?
+          <a class="text-blue-800 hover:text-blue-600" href="/register">Sign Up</a>
+        </p>
+      </div>
+    </form>
+</div>
+
+<script defer src="/js/password.js"></script>
+

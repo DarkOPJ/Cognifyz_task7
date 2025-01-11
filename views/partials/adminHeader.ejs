@@ -1,0 +1,30 @@
+<header class="header grid grid-cols-2 pt-2.5">
+  <a
+    class="headerLogo font-extrabold text-[25xp] hover:underline flex items-center"
+    href="/admin"
+    >Admin Panel</a
+  >
+
+  <nav class="headerNav flex justify-center items-center">
+    <ul class="flex gap-4 font-semibold p-0">
+      <li><a class="navLink p-2.5 hover:underline" href="/">Home</a></li>
+      <li>
+        <a class="navLink p-2.5 hover:underline" href="/contact"
+          >Contact</a
+        >
+      </li>
+    </ul>
+  </nav>
+
+  <div class="headerBtn flex justify-end">
+    <% if (showLogout) { %>
+    <a href="/logout"
+      class="flex gap-1.5 items-center rounded-radius py-1.5 px-3 bg-none text-fontSizeBase font-semibold text-myblack border-transparent border-2 hover:border-myblack"
+    >
+      Logout
+    </a>
+    <% } else { %>
+    <p class="text-fontSizeBase font-semibold text-myblack">Welcome</p>
+    <% } %>
+  </div>
+</header>

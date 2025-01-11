@@ -1,0 +1,28 @@
+install these
+bcrypt 
+connect-mongo 
+cookie-parser 
+dotenv 
+ejs 
+express 
+express-ejs-layouts 
+express-session 
+jsonwebtoken 
+method-override 
+mongoose
+
+Setup .gitignore and .env
+gitignore to ignore the upload of node_modules and .env to github
+.env to set up stuff like db username/password stuff
+
+Setup package.json scripts (start and dev)
+
+setup server
+require dotenv
+setup express-ejs-layouts
+setup static files, templating engine, layouts
+
+check this video for configuring tailwind
+https://youtu.be/oFfBJkKCMsY?si=sKZp7Rxi65Ao9dJy
+
+<%- body %> to inherit templates in layout

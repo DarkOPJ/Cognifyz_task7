@@ -1,0 +1,23 @@
+<div class="admin-title flex justify-between items-center">
+    <h2>Posts</h2>
+    <a class="hover:bg-myblack hover:text-white p-1.5 rounded-md duration-300" href="/add-post">+ New Post</a>
+</div>
+
+<ul class="admin-posts p-0 m-0">
+    <% posts.forEach(post => { %>
+      <li class="flex justify-between gap-4 py-2.5">
+        <h3 class="flex items-center max-w-xs sm:max-w-md md:max-w-xl lg:max-w-3xl">
+          <a href="/post/<%= post._id %>"><%= post.title %> &nearr;</a>
+        </h3>
+        <div class="admin-posts-controls">
+          <a href="/edit-post/<%= post._id %>" class="btn">Edit</a>
+          <button class="btn openDialog" 
+                  data-post-id="<%= post._id %>" 
+                  data-post-title="<%= post.title %>">
+            Delete
+          </button>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+  

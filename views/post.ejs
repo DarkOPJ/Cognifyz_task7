@@ -1,0 +1,12 @@
+<article>
+  <h1 class="mb-5 font-semibold"><%= post.title %></h1>
+  <div id="postOutput"><%- post.body %></div>
+</article>
+
+<!-- <script defer>
+  // Use the function from sanitize.js
+  sanitizeAndRender(
+    "<%- JSON.stringify(post.body).replace(/</g, '\\u003c') %>",
+    "postOutput"
+  );
+</script> -->

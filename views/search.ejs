@@ -1,0 +1,25 @@
+<div class="author py-2 text-center">
+  <h1 class="authorHead mt-2.5 mb-[5px] font-semibold">Search Results</h1>
+</div>
+
+<section class="articles">
+  <h2 class="articlesHead mt-5 font-normal">
+    Results for "<%= searchTerm %>"
+  </h2>
+  <ul class="articlesUl text-fontSizeUl flex flex-col">
+    <% posts.forEach(post => { %>
+    <li class="text-[24px] cursor-pointer duration-100 hover:filter-none">
+      <a
+        class="flex flex-col justify-between my-[18px] md:flex-row md:items-center"
+        href="/post/<%= post._id %>"
+      >
+        <span><%= post.title %></span>
+        <span
+          class="articleListDate text-fontSizeBase text-mygray w-[260px] inline-block md:text-right"
+          ><%= post.createdAt.toDateString() %></span
+        >
+      </a>
+    </li>
+    <% }) %>
+  </ul>
+</section>

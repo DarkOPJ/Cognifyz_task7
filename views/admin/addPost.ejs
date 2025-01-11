@@ -1,0 +1,36 @@
+<a href="/dashboard" class="hover:underline">&lArr; Back to Dashboard</a>
+
+<div class="mt-3 flex justify-between items-center">
+  <h2>Add New Post</h2>
+</div>
+
+
+<form id="blogForm" action="/add-post" method="POST">
+  <div class="w-full mt-3">
+    <label for="title" class="font-bold">Title</label>
+    <input
+      type="text"
+      class="border border-mygray"
+      placeholder="eg. NodeJs Essentials"
+      id="title"
+      name="title"
+      required
+    />
+  </div>
+
+  <div class="w-full mt-10">
+    <label for="content" class="font-bold">Post</label>
+      <textarea id="content" name="content">
+          Whats on your mind?
+        </textarea
+      >
+  </div>
+
+  <div class="w-full mt-10 flex justify-center items-end">
+    <input
+      type="submit"
+      class="text-white bg-black cursor-pointer"
+      value="Add New Post"
+    />
+  </div>
+</form>
