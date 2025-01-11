@@ -660,6 +660,10 @@ video {
   margin-bottom: 5px;
 }
 
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -702,6 +706,10 @@ video {
 
 .grid {
   display: grid;
+}
+
+.h-0 {
+  height: 0px;
 }
 
 .h-auto {
@@ -831,10 +839,6 @@ video {
 
 .whitespace-nowrap {
   white-space: nowrap;
-}
-
-.whitespace-pre-wrap {
-  white-space: pre-wrap;
 }
 
 .rounded-full {
@@ -1013,6 +1017,11 @@ video {
   color: 25xp;
 }
 
+.text-amber-900 {
+  --tw-text-opacity: 1;
+  color: rgb(120 53 15 / var(--tw-text-opacity, 1));
+}
+
 .text-blue-800 {
   --tw-text-opacity: 1;
   color: rgb(30 64 175 / var(--tw-text-opacity, 1));
@@ -1110,6 +1119,7 @@ input[type="email"],
 input[type="password"],
 input[type="search"],
 input[type="submit"],
+input[type="number"],
 select,
 textarea {
   margin-bottom: 1rem;
@@ -1243,6 +1253,29 @@ input[type="search"]::-webkit-search-cancel-button {
   /* grid-template-columns: repeat(); */
 }
 
+.coffee-form-wrapper{
+  transition: all 300ms ease;
+}
+
+.coffee-form-wrapper.active{
+  height: -moz-fit-content;
+  height: fit-content;
+  /* margin-block: 10px; */
+  transition: all 300ms ease;
+}
+
+.coffee-form{
+  translate: 0 -100%;
+  transition: all 300ms ease;
+  opacity: 0;
+}
+
+.coffee-form.active{
+  opacity: 1;
+  translate: 0;
+  transition: all 300ms ease;
+}
+
 /* Admin Dashboard */
 
 .admin-posts-controls .btn {
@@ -1331,6 +1364,10 @@ input[type="search"]::-webkit-search-cancel-button {
 @media (min-width: 640px) {
   .sm\:max-w-md {
     max-width: 28rem;
+  }
+
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sm\:flex-nowrap {
