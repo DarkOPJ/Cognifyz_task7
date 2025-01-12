@@ -56,11 +56,11 @@
       </ul>
 
       <h3 class="mt-1">
-        Buy Me a <button class="text-amber-900 hover:underline" id="coffee-btn">Coffee</button>
+        Buy Me a <button class="text-amber-900 hover:underline" id="coffee-btn">Coffee</button> ❤️
       </h3>
       
       <div class="coffee-form-wrapper overflow-hidden h-0 w-full">
-        <form class="coffee-form">
+        <form action="/paystack" method="POST" class="coffee-form" id="coffee-form">
           <div class="my-3 grid gap-4 grid-cols-1 sm:grid-cols-2">
             <div class="w-full">
               <label for="email" class="font-bold">E-mail</label>
@@ -71,6 +71,7 @@
                 placeholder="john@example.com"
                 id="email"
                 name="email"
+                required
               />
             </div>
             <div class="w-full">
@@ -82,6 +83,7 @@
                 placeholder="eg. 50"
                 id="amount"
                 name="amount"
+                required
               />
             </div>
             <div class="w-full">
