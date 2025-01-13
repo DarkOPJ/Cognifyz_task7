@@ -986,6 +986,11 @@ video {
   text-align: center;
 }
 
+.text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
 .text-\[1\.3rem\] {
   font-size: 1.3rem;
 }
@@ -998,6 +1003,10 @@ video {
   font-size: 1rem;
 }
 
+.text-fontSizeLg {
+  font-size: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
+}
+
 .text-fontSizeMd {
   font-size: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
 }
@@ -1008,25 +1017,6 @@ video {
 
 .text-fontSizeXl {
   font-size: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-}
-
-.text-fontSizeLg {
-  font-size: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
 }
 
 .font-bold {

@@ -24,7 +24,6 @@ router.get("/admin", async (req, res) => {
       error.status = "Server error";
       error.statusCode = 500;
       res.render("error", { error, currentRoute: "/error", locals });
-      next(error);
     }
 });
 
@@ -81,7 +80,6 @@ router.post("/admin", async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -104,7 +102,6 @@ router.get("/dashboard", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -121,7 +118,6 @@ router.get("/add-post", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -147,7 +143,6 @@ router.post("/add-post", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -171,7 +166,6 @@ router.get("/edit-post/:id", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -189,7 +183,6 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
       error.statusCode = 400;
       res.render("error", { error, currentRoute: "/error", locals });
       next(error);
-      return;
     }
 
     await Post.findByIdAndUpdate(id, {
@@ -203,7 +196,6 @@ router.put("/edit-post/:id", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -232,7 +224,6 @@ router.delete("/delete-post/:id", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -248,7 +239,6 @@ router.get("/logout", authMiddleware, async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -265,7 +255,6 @@ router.get("/register", async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
@@ -316,7 +305,6 @@ router.post("/register", async (req, res) => {
     error.statusCode = 500;
     error.status = "Server error";
     res.render("error", { error, currentRoute: "/error", locals });
-    next(error);
   }
 });
 
