@@ -13,9 +13,9 @@ const pageRouter = express.Router();
 pageRouter.get("", authenticatedUserInfo, async (req, res) => {
   try {
     const locals = {
-      title: "NodeJs Blog",
+      title: "Daily Scribbles",
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Login",
+      user: req.user ? req.user.firstName : "Admin",
     };
 
     let perPage = 10;
@@ -38,8 +38,10 @@ pageRouter.get("", authenticatedUserInfo, async (req, res) => {
       currentRoute: "/",
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    error.status = "Server error";
+    error.statusCode = 500;
+    res.render("error", { error, currentRoute: "/error", locals });
+    next(error);
   }
 });
 
@@ -52,7 +54,7 @@ pageRouter.get("/post/:id", authenticatedUserInfo, async (req, res) => {
     const locals = {
       title: "Post - " + post.title,
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Login",
+      user: req.user ? req.user.firstName : "Admin",
     };
 
     res.render("post", {
@@ -61,8 +63,10 @@ pageRouter.get("/post/:id", authenticatedUserInfo, async (req, res) => {
       currentRoute: `/posts/${id}`,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    error.status = "Server error";
+    error.statusCode = 500;
+    res.render("error", { error, currentRoute: "/error", locals });
+    next(error);
   }
 });
 
@@ -72,7 +76,7 @@ pageRouter.post("/search", authenticatedUserInfo, async (req, res) => {
     const locals = {
       title: "Search",
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Login",
+      user: req.user ? req.user.firstName : "Admin",
     };
 
     const searchTerm = req.body.searchTerm;
@@ -91,22 +95,23 @@ pageRouter.post("/search", authenticatedUserInfo, async (req, res) => {
       searchTerm,
     });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    error.status = "Server error";
+    error.statusCode = 500;
+    res.render("error", { error, currentRoute: "/error", locals });
+    next(error);
   }
 });
 
 // POST paystack
 pageRouter.post("/paystack", limiter, async (req, res) => {
   try {
+    locals = { user: req.user ? req.user.firstName : "Admin" };
     const { email, amount } = req.body;
 
-    if (!email ||!amount) {
-      return res
-       .status(400)
-       .json({ message: "Email and amount are required" });
+    if (!email || !amount) {
+      return res.status(400).json({ message: "Email and amount are required" });
     }
-    
+
     const params = JSON.stringify({
       email: email,
       amount: amount * 100,
@@ -133,36 +138,54 @@ pageRouter.post("/paystack", limiter, async (req, res) => {
 
         respaystack.on("end", () => {
           const response = JSON.parse(data);
-          console.log(response);
+          // console.log(response);
 
           if (response.status) {
             // Redirect to the authorization URL
             return res.redirect(response.data.authorization_url);
           } else {
-            return res.status(400).send("Failed to initialize payment");
+            const error = new Error("Failed to initialize payment");
+            error.status = "Fail";
+            error.statusCode = 500;
+            res.render("error", { error, currentRoute: "/error", locals });
+            next(error);
+            return;
           }
         });
       })
       .on("error", (error) => {
-        console.error(error);
+        error.status = "Fail";
+        error.statusCode = 500;
+        res.render("error", { error, currentRoute: "/error", locals });
+        next(error);
+        return;
       });
 
     reqpaystack.write(params);
     reqpaystack.end();
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Server Error");
+    error.status = "Server error";
+    error.statusCode = 500;
+    res.render("error", { error, currentRoute: "/error", locals });
+    next(error);
   }
 });
 
 // GET ABOUT page
 pageRouter.get("/contact", authenticatedUserInfo, (req, res) => {
-  const locals = {
-    title: "Contact Me",
-    description: "Simple blog page with NodeJs and MongoDB.",
-    user: req.user ? req.user.firstName : "Login",
-  };
-  res.render("contact", { locals, currentRoute: "/contact" });
+  try {
+    const locals = {
+      title: "Contact Me",
+      description: "Simple blog page with NodeJs and MongoDB.",
+      user: req.user ? req.user.firstName : "Admin",
+    };
+    res.render("contact", { locals, currentRoute: "/contact" });
+  } catch (error) {
+    error.status = "Server error";
+    error.statusCode = 500;
+    res.render("error", { error, currentRoute: "/error", locals });
+    next(error);
+  }
 });
 
 module.exports = pageRouter;
