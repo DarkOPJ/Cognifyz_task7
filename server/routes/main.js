@@ -123,7 +123,7 @@ pageRouter.post("/paystack", limiter, async (req, res) => {
       path: "/transaction/initialize",
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.PAYSTACK_LIVEKEY}`,
+        Authorization: `Bearer ${process.env.PAYSTACK_TESTKEY}`,
         "Content-Type": "application/json",
       },
     };
