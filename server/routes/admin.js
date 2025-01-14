@@ -111,7 +111,7 @@ router.get("/oauth-login", async (req, res) => {
   }
 });
 
-router.get("/loginSuccess", authMiddleware, async (req, res) => {
+router.get("/loginSuccess", async (req, res) => {
   const locals = {
     title: "Login Successful",
     description: "Simple blog page with NodeJs and MongoDB.",
