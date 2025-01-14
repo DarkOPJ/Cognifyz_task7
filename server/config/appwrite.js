@@ -1,13 +1,12 @@
-import { Client, Databases, Account } from "node-appwrite";
-import dotenv from "dotenv";
-
-dotenv.config();
+const { Client, Databases, Account } = require("node-appwrite");
 
 const createAppwriteClient = async (type, session) => {
-    const { ENDPOINT, PROJECT_ID, API_KEY } = process.env;
+    const ENDPOINT  = process.env.ENDPOINT
+    const PROJECT_ID = process.env.PROJECT_ID
+    const API_KEY = process.env.API_KEY
     const client = new Client()
-        .setEndpoint(process.env.ENDPOINT)
-        .setProject(process.env.PROJECT_ID);
+        .setEndpoint(ENDPOINT)
+        .setProject(PROJECT_ID);
 
     if (type === "admin") {
         client.setKey(API_KEY);
@@ -28,4 +27,4 @@ const createAppwriteClient = async (type, session) => {
     };
 };
 
-export default createAppwriteClient;
+module.exports = createAppwriteClient;

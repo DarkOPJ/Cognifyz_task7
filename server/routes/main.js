@@ -4,7 +4,7 @@ const https = require("https");
 
 const Post = require("../models/Post");
 
-const authenticatedUserInfo = require("../middleware/authenticatedUser");
+const authenticatedUserInfo = require("../middleware/authenticatedUser.js");
 const limiter = require("../middleware/rateLimit");
 
 const pageRouter = express.Router();
@@ -15,7 +15,7 @@ pageRouter.get("", authenticatedUserInfo, async (req, res) => {
     const locals = {
       title: "Daily Scribbles",
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Admin",
+      user: req.user ? (req.user.firstName || req.user.name) : "Admin",
     };
 
     let perPage = 10;
@@ -54,7 +54,7 @@ pageRouter.get("/post/:id", authenticatedUserInfo, async (req, res) => {
     const locals = {
       title: "Post - " + post.title,
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Admin",
+      user: req.user ? (req.user.firstName || req.user.name) : "Admin",
     };
 
     res.render("post", {
@@ -76,7 +76,7 @@ pageRouter.post("/search", authenticatedUserInfo, async (req, res) => {
     const locals = {
       title: "Search",
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Admin",
+      user: req.user ? (req.user.firstName || req.user.name) : "Admin",
     };
 
     const searchTerm = req.body.searchTerm;
@@ -177,7 +177,7 @@ pageRouter.get("/contact", authenticatedUserInfo, (req, res) => {
     const locals = {
       title: "Contact Me",
       description: "Simple blog page with NodeJs and MongoDB.",
-      user: req.user ? req.user.firstName : "Admin",
+      user: req.user ? (req.user.firstName || req.user.name) : "Admin",
     };
     res.render("contact", { locals, currentRoute: "/contact" });
   } catch (error) {
